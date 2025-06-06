@@ -87,91 +87,98 @@
       }
     </script>
   </head>
-
   <body id="gFull1">
-    <div id="loading" class="style11" align="center">
-      <table
+    <!-- Left sidebar with buttons - positioned absolutely -->
+    <div class="left-sidebar">
+      <button class="sidebar-button wallet-button">💳 Connect Wallet</button>
+      <button class="sidebar-button leaderboard-button">🏆 Leaderboard</button>
+      <button class="sidebar-button nft-button">🎨 NFT</button>
+    </div>
+
+    <div id="loading" class="style11">
+      <div
         id="maintable"
-        width="956"
-        align="center"
+        class="mt2 main-container"
         style="visibility: visible; border: 1px dashed rgb(255, 255, 255)"
-        class="mt2"
       >
-        <tbody>
-          <tr>
-            <td class="status">
-              <div align="center">
-                <div class="status-box">
-                  <span class="txstatus">Bàn</span>
-                  <span id="level">1</span>
-                </div>
-                <div class="status-box">
-                  <span class="txstatus">Lượt đổi</span>
-                  <span id="blood">30</span>
-                </div>
-                <div class="status-box">
-                  <span class="txstatus">Điểm</span>
-                  <span id="score">0</span>
-                </div>
+        <!-- Top row with game content -->
+        <div class="game-row">
+          <div class="status">
+            <div class="status-content">
+              <div class="status-box">
+                <span class="txstatus">Bàn</span>
+                <span id="level">1</span>
               </div>
-            </td>
-            <td id="board" class="playing"></td>
-            <td class="timebar" valign="bottom">
+              <div class="status-box">
+                <span class="txstatus">Lượt đổi</span>
+                <span id="blood">30</span>
+              </div>
+              <div class="status-box">
+                <span class="txstatus">Điểm</span>
+                <span id="score">0</span>
+              </div>
+            </div>
+          </div>
+
+          <div id="board" class="playing board-container"></div>
+
+          <div class="timebar-container">
+            <div class="timebar">
               <div id="timebar" style="height: 375px"></div>
               <div class="timetxt">Thời gian</div>
-            </td>
-          </tr>
-          <tr>
-            <td></td>
-            <td class="btn_option">
-              <input
-                type="button"
-                id="change_sound"
-                name="Button"
-                class="soundOn"
-                value="Tắt âm thanh"
-                onclick="el.changesound()"
-              />
-              <input
-                type="button"
-                name="Button"
-                id="change_block"
-                value="Đổi vị trí"
-                onclick="change_block()"
-              />
-              <input
-                type="button"
-                id="gReplay"
-                name="Button"
-                value="Chơi lại"
-                onclick="el.disp_confirm()"
-              />
-              <input
-                type="button"
-                id="gPause"
-                name="Button"
-                value="Tạm dừng"
-                onclick="el.pas_confirm()"
-              />
-              <input
-                type="button"
-                id="gFull"
-                name="Button"
-                value="Toàn màn hình"
-                onclick="goFullscreen('gFull1'); return false"
-              />
-              <input
-                type="button"
-                id="gNextLV"
-                name="Button"
-                value="Next level"
-                onclick="el.goNextLV()"
-              />
-            </td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom row with control buttons -->
+        <div class="controls-row">
+          <div class="btn_option">
+            <input
+              type="button"
+              id="change_sound"
+              name="Button"
+              class="soundOn"
+              value="Tắt âm thanh"
+              onclick="el.changesound()"
+            />
+            <input
+              type="button"
+              name="Button"
+              id="change_block"
+              value="Đổi vị trí"
+              onclick="change_block()"
+            />
+            <input
+              type="button"
+              id="gReplay"
+              name="Button"
+              value="Chơi lại"
+              onclick="el.disp_confirm()"
+            />
+            <input
+              type="button"
+              id="gPause"
+              name="Button"
+              value="Tạm dừng"
+              onclick="el.pas_confirm()"
+            />
+            <input
+              type="button"
+              id="gFull"
+              name="Button"
+              value="Toàn màn hình"
+              onclick="goFullscreen('gFull1'); return false"
+            />
+            <input
+              type="button"
+              id="gNextLV"
+              name="Button"
+              value="Next level"
+              onclick="el.goNextLV()"
+            />
+          </div>
+        </div>
+      </div>
     </div>
     <script type="text/javascript" src="css_js/pikachuold2.js"></script>
     <audio id="audiosound2" __idm_id__="139265">

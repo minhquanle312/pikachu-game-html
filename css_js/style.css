@@ -19,6 +19,8 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
+  min-height: 100vh;
+  position: relative;
 }
 #maintable {
   border: 0 !important;
@@ -74,6 +76,9 @@ body {
   font-style: normal;
   font-size: 32px;
   color: #ffe506;
+  display: flex;
+  flex-direction: column;
+  min-width: 250px;
 }
 .status div {
   /*position: absolute;
@@ -185,4 +190,96 @@ body {
   width: 55px;
   opacity: 1;
   border-color: #033 !important;
+}
+
+/* Flexbox layout styles */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  min-height: 600px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Left sidebar */
+.left-sidebar {
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 1000;
+}
+
+.sidebar-button {
+  background: linear-gradient(135deg, #f4d03f 0%, #f39c12 100%);
+  border: 2px solid #e67e22;
+  color: #2c3e50;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  min-width: 140px;
+  text-align: center;
+  font-family: "Rubik", sans-serif;
+}
+
+.sidebar-button:hover {
+  background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.sidebar-button:active {
+  transform: translateY(0px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.game-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex: 1;
+  gap: 10px;
+}
+
+.status {
+  display: flex;
+  flex-direction: column;
+  min-width: 250px;
+}
+
+.status-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.board-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.timebar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 100px;
+}
+
+.controls-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
