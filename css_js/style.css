@@ -1,170 +1,188 @@
-
-@font-face
-{
-    font-family: fontpikachu;
-    src: url('EVILDEAD.TTF');
-    font-weight: bold;
-    font-style: normal;
+@font-face {
+  font-family: fontpikachu;
+  src: url("EVILDEAD.TTF");
+  font-weight: bold;
+  font-style: normal;
 }
-@font-face
-{
-    font-family: fontgoblin;
-    src: url('GoblinOne.otf');
-    font-weight: normal;
+@font-face {
+  font-family: fontgoblin;
+  src: url("GoblinOne.otf");
+  font-weight: normal;
 }
-body
-{
-    background-color: #000;
-	margin: 0;
-	padding: 0;
-	width: 100%;
+@font-face {
+  font-family: ComicSansMS;
+  src: url("ComicSansMS.ttf");
+  font-weight: normal;
 }
-#maintable
-{
-    border: 0 !important;
-    padding-top: 0;
-    width: 100%;
-    background: url(bgpikachu1.jpg) no-repeat 0 0;
-	background-size: 100% !important;
+body {
+  background-color: #000;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
-#maintable #board > div
-{
-	top: -40px;
+#maintable {
+  border: 0 !important;
+  padding-top: 0;
+  width: 100%;
+  background: url(pikachu-bg.png) no-repeat 0 0;
+  /* background: url(bgpikachu1.jpg) no-repeat 0 0; */
+  background-size: 100% !important;
 }
-#board
-{
-	width: 880px;
+#maintable #board > div {
+  top: -40px;
 }
-.mt2
-{
-    /*background: url(bgpikachu2.jpg) no-repeat 0 0 !important;*/
-	    background-size: 100% !important;
+#board {
+  width: 880px;
 }
-.mt3
-{
-    /*background: url(bgpikachu3.jpg) no-repeat 0 0 !important;*/
+.mt2 {
+  /*background: url(bgpikachu2.jpg) no-repeat 0 0 !important;*/
+  background-size: 100% !important;
 }
-.mt4
-{
-    /*background: url(bgpikachu4.jpg) no-repeat 0 0 !important;*/
+.mt3 {
+  /*background: url(bgpikachu3.jpg) no-repeat 0 0 !important;*/
 }
-.mt5
-{
-    /*background: url(bgpikachu.jpg) no-repeat 0 0 !important;*/
-}           
-.timebar
-{
-    position: relative;
+.mt4 {
+  /*background: url(bgpikachu4.jpg) no-repeat 0 0 !important;*/
 }
-#timebar
-{
-    position: relative;
-    margin: 0 auto;
-    top: -90px;
-    width: 23px;
-    max-height: 469px;
-    background: url(timebar.png) no-repeat center bottom;
+.mt5 {
+  /*background: url(bgpikachu.jpg) no-repeat 0 0 !important;*/
 }
-.timetxt
-{
-    position: relative;
-    color: #fff;
-    font-size: 20px;
-    font-weight: bold;
-    font-family: sans-serif;
-    top: -70px;
-    text-align: center;
-    text-transform: uppercase;
+.timebar {
+  position: relative;
 }
-.status
-{
-    position: relative;
-    width: 250px;
-    font-style: normal;
-    font-size: 32px;
-    color: #ffe506;
+#timebar {
+  position: relative;
+  margin: 0 auto;
+  top: -90px;
+  width: 23px;
+  max-height: 469px;
+  background: url(timebar.png) no-repeat center bottom;
 }
-.status div
-{
-    /*position: absolute;
+.timetxt {
+  position: relative;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: sans-serif;
+  top: -70px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.status {
+  position: relative;
+  width: 250px;
+  font-style: normal;
+  font-size: 32px;
+  color: #ffe506;
+}
+.status div {
+  /*position: absolute;
     width: 150px;*/
-    text-align: center;
+  text-align: center;
 }
-.txstatus
-{
-	display: block;
-    position: relative;
-    color: #fff;
-    font-size: 40px;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-family: sans-serif;
-    text-shadow: 2px 0px 3px #000;
-	padding-top: 20px;
-	padding-bottom: 10px;
+.txstatus {
+  font-family: "ComicSansMS", sans-serif;
+  display: block;
+  position: relative;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-shadow: 2px 0px 3px #000;
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
-#score, #blood, #level
-{
-    display: block;
-    position: relative;
-    /*top: 55px;*/
-    font-family: fontpikachu,fontgoblin,Impact;
+#score,
+#blood,
+#level {
+  font-family: "Rubik", sans-serif;
+  display: block;
+  position: relative;
+
+  font-family: "Rubik";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 76px;
+  /* identical to box height */
+  text-align: center;
+
+  color: #f7ef9a;
+
+  /* border: 3px solid #532100; */
+  /* text-shadow: 0px 0px 0px #532100; */
+  text-shadow: -2px -2px 0px #532100, 2px -2px 0px #532100, -2px 2px 0px #532100,
+    2px 2px 0px #532100, -2px 0px 0px #532100, 2px 0px 0px #532100,
+    0px -2px 0px #532100, 0px 2px 0px #532100;
+
+  /*top: 55px;*/
+  /* font-family: fontpikachu, fontgoblin, Impact; */
 }
-.soundOff
-{
-    /*background: url(btnsound.png) no-repeat 0 0 !important;*/
+.soundOff {
+  /*background: url(btnsound.png) no-repeat 0 0 !important;*/
 }
-.soundOn
-{
-    /*background: url(btnsound.png) no-repeat 0 -30px !important;*/
+.soundOn {
+  /*background: url(btnsound.png) no-repeat 0 -30px !important;*/
 }
-.btn_option
-{
-    padding-bottom: 20px;
-    text-align: center;
+.btn_option {
+  padding-bottom: 20px;
+  text-align: center;
 }
-#gReplay, #gPause, #gFull, #gNextLV, #change_sound, #change_block
-{
-    cursor: pointer;
-    margin-left: 0px;
-    position: relative;
-	color: #fff;
-	font-size: 20px;
-	font-weight: bold;
-    margin-right: 25px;
-    background: none;
-	padding: 5px;
-    border: 0;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
+#gReplay,
+#gPause,
+#gFull,
+#gNextLV,
+#change_sound,
+#change_block {
+  cursor: pointer;
+  margin-left: 0px;
+  position: relative;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 25px;
+  /* background: none; */
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.24) 0%,
+    rgba(0, 0, 0, 0.24) 100%
+  );
+  opacity: 0.8;
+  border-radius: 16px;
+
+  /* padding: 12px 40px; */
+  padding: 6px 20px;
+  border: 0;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
 }
-#gReplay:hover, #gPause:hover, #gFull:hover, #gNextLV:hover, #change_sound:hover, #change_block:hover
-{
-    border: 1px solid #ffe506;
-    -moz-box-shadow: 0px 0px 5px #ffe506;
-    -webkit-box-shadow: 0px 0px 5px #ffe506;
-    box-shadow: 0px 0px 5px #ffe506;
+#gReplay:hover,
+#gPause:hover,
+#gFull:hover,
+#gNextLV:hover,
+#change_sound:hover,
+#change_block:hover {
+  /* border: 1px solid #ffe506;
+  -moz-box-shadow: 0px 0px 5px #ffe506;
+  -webkit-box-shadow: 0px 0px 5px #ffe506;
+  box-shadow: 0px 0px 5px #ffe506; */
+  text-shadow: 0px 0px 14px #ffffff;
 }
-.menuFooter ul li a
-{
-    color:#ad612b;
-    }
-.copyright
-{
-    color:#555;
-    }    
-.menuFooter ul li
-{
-    border-right:1px dotted #444444;
-    }  
-.copyright a
-{
-    color:#ca3f28;
-} 
-#board img
-{
-	width: 55px;
-	opacity: 1;
-	border-color: #033 !important;
+.menuFooter ul li a {
+  color: #ad612b;
+}
+.copyright {
+  color: #555;
+}
+.menuFooter ul li {
+  border-right: 1px dotted #444444;
+}
+.copyright a {
+  color: #ca3f28;
+}
+#board img {
+  width: 55px;
+  opacity: 1;
+  border-color: #033 !important;
 }
