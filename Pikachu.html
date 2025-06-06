@@ -1,124 +1,190 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
+  <head>
     <title>Pikachu</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
     <script type="text/javascript" src="css_js/jhCore-1.54.js"></script>
-    <link type="text/css" rel="Stylesheet" href="css_js/style.css">
-	<link type="text/css" rel="Stylesheet" href="css_js/style2.css">
+    <link type="text/css" rel="Stylesheet" href="css_js/style.css" />
+    <link type="text/css" rel="Stylesheet" href="css_js/style2.css" />
     <script type="text/javascript">
-		// Xóa hoặc comment dòng này
-		// document.domain = location.hostname;
-		
-		var oStaticURL = '';
-        var el = {
-            blood: 30,
-            checksound: true,
-            changesound: function() {
-                this.checksound = !this.checksound;
-                document.getElementById('change_sound').value = this.checksound ? "Tắt âm thanh" : "Bật âm thanh";
-            },
-            disp_confirm: function() {
-                if(confirm("Bạn có muốn chơi lại từ đầu?")) {
-                    location.reload();
-                }
-            },
-            pas_confirm: function() {
-                var pauseBtn = document.getElementById('gPause');
-                if(pauseBtn.value === "Tạm dừng") {
-                    pauseBtn.value = "Tiếp tục";
-                    // Thêm logic tạm dừng game ở đây
-                } else {
-                    pauseBtn.value = "Tạm dừng";
-                    // Thêm logic tiếp tục game ở đây
-                }
-            },
-            goNextLV: function() {
-                // Thêm logic chuyển level ở đây
-                var currentLevel = parseInt(document.getElementById('level').innerText);
-                document.getElementById('level').innerText = currentLevel + 1;
-            }
-        };
+      // Xóa hoặc comment dòng này
+      // document.domain = location.hostname;
 
-		jh.ready(
-			function(){	
-				jh("#maintable").attr("class","mt"+Math.round(Math.random(4)+1));
-				loadImage();
-			}
-		);
-	</script>
-<script>              
-function addEvent(obj, eventName, func) {
-    if (obj.attachEvent){
-    obj.attachEvent("on" + eventName, func);}
-    else if(obj.addEventListener){
-    obj.addEventListener(eventName, func, true);}
-    else{
-    obj["on" + eventName] = func;}
-}
+      var oStaticURL = "";
+      var el = {
+        blood: 30,
+        checksound: true,
+        changesound: function () {
+          this.checksound = !this.checksound;
+          document.getElementById("change_sound").value = this.checksound
+            ? "Tắt âm thanh"
+            : "Bật âm thanh";
+        },
+        disp_confirm: function () {
+          if (confirm("Bạn có muốn chơi lại từ đầu?")) {
+            location.reload();
+          }
+        },
+        pas_confirm: function () {
+          var pauseBtn = document.getElementById("gPause");
+          if (pauseBtn.value === "Tạm dừng") {
+            pauseBtn.value = "Tiếp tục";
+            // Thêm logic tạm dừng game ở đây
+          } else {
+            pauseBtn.value = "Tạm dừng";
+            // Thêm logic tiếp tục game ở đây
+          }
+        },
+        goNextLV: function () {
+          // Thêm logic chuyển level ở đây
+          var currentLevel = parseInt(
+            document.getElementById("level").innerText
+          );
+          document.getElementById("level").innerText = currentLevel + 1;
+        },
+      };
 
-</script>
-<script type="text/javascript">
-	function goFullscreen(id) {
-    // Get the element that we want to take into fullscreen mode
-    var element = document.getElementById(id);
+      jh.ready(function () {
+        jh("#maintable").attr("class", "mt" + Math.round(Math.random(4) + 1));
+        loadImage();
+      });
+    </script>
+    <script>
+      function addEvent(obj, eventName, func) {
+        if (obj.attachEvent) {
+          obj.attachEvent("on" + eventName, func);
+        } else if (obj.addEventListener) {
+          obj.addEventListener(eventName, func, true);
+        } else {
+          obj["on" + eventName] = func;
+        }
+      }
+    </script>
+    <script type="text/javascript">
+      function goFullscreen(id) {
+        // Get the element that we want to take into fullscreen mode
+        var element = document.getElementById(id);
 
-    // These function will not exist in the browsers that don't support fullscreen mode yet, 
-    // so we'll have to check to see if they're available before calling them.
+        // These function will not exist in the browsers that don't support fullscreen mode yet,
+        // so we'll have to check to see if they're available before calling them.
 
-    if (element.mozRequestFullScreen) {
-      // This is how to go into fullscren mode in Firefox
-      // Note the "moz" prefix, which is short for Mozilla.
-      element.mozRequestFullScreen();
-    } else if (element.webkitRequestFullScreen) {
-      // This is how to go into fullscreen mode in Chrome and Safari
-      // Both of those browsers are based on the Webkit project, hence the same prefix.
-      element.webkitRequestFullScreen();
-   }
-   // Hooray, now we're in fullscreen mode!
-  }
+        if (element.mozRequestFullScreen) {
+          // This is how to go into fullscren mode in Firefox
+          // Note the "moz" prefix, which is short for Mozilla.
+          element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullScreen) {
+          // This is how to go into fullscreen mode in Chrome and Safari
+          // Both of those browsers are based on the Webkit project, hence the same prefix.
+          element.webkitRequestFullScreen();
+        }
+        // Hooray, now we're in fullscreen mode!
+      }
+    </script>
+  </head>
 
-</script> 
-</head>
-
-<body id="gFull1" >
-     
-
-<div id="loading" class="style11" align="center">
-	<table id="maintable" width="956" align="center" style="visibility: visible; border: 1px dashed rgb(255, 255, 255);" class="mt2">
-		<tbody><tr>
-			<td class="status">
-				<div align="center">
-				
-					<span class="txstatus">Bàn</span> 
-					<span id="level">1</span>
-					<span class="txstatus">Lượt đổi</span>
-					<span id="blood">30</span> 
-					<span class="txstatus">Điểm</span>
-					<span id="score">0</span>
-				</div>
-			</td>
-			<td id="board" class="playing"></td>
-			<td class="timebar" valign="bottom">
-				<div id="timebar" style="height: 375px;"></div>
-				<div class="timetxt">Thời gian</div>
-			</td>
-		</tr>
-		<tr>
-			<td></td>
-			<td class="btn_option">
-				<input type="button" id="change_sound" name="Button" class="soundOn" value="Tắt âm thanh" onclick="el.changesound()">
-				<input type="button" name="Button" id="change_block" value="Đổi vị trí" onclick="change_block()">
-				<input type="button" id="gReplay" name="Button" value="Chơi lại" onclick="el.disp_confirm()">
-				<input type="button" id="gPause" name="Button" value="Tạm dừng" onclick="el.pas_confirm()">
-				<input type="button" id="gFull" name="Button" value="Toàn màn hình" onclick="goFullscreen('gFull1'); return false">
-				<input type="button" id="gNextLV" name="Button" value="Next level" onclick="el.goNextLV()">
-			</td>
-			<td></td>
-		</tr>
-	</tbody></table>
-</div>
-<script type="text/javascript" src="css_js/pikachuold2.js"></script>
-<audio id="audiosound2" __idm_id__="139265"><source src="sound/sound2.mp3"><source src="sound/sound2.ogg"></audio>
-<audio id="audiosound1"><source src="sound/sound1.mp3"><source src="sound/sound1.ogg"></audio>
-<audio id="audiosound4"><source src="sound/sound4.mp3"><source src="sound/sound4.ogg"></audio>
-</body></html>
+  <body id="gFull1">
+    <div id="loading" class="style11" align="center">
+      <table
+        id="maintable"
+        width="956"
+        align="center"
+        style="visibility: visible; border: 1px dashed rgb(255, 255, 255)"
+        class="mt2"
+      >
+        <tbody>
+          <tr>
+            <td class="status">
+              <div align="center">
+                <div class="status-box">
+                  <span class="txstatus">Bàn</span>
+                  <span id="level">1</span>
+                </div>
+                <div class="status-box">
+                  <span class="txstatus">Lượt đổi</span>
+                  <span id="blood">30</span>
+                </div>
+                <div class="status-box">
+                  <span class="txstatus">Điểm</span>
+                  <span id="score">0</span>
+                </div>
+              </div>
+            </td>
+            <td id="board" class="playing"></td>
+            <td class="timebar" valign="bottom">
+              <div id="timebar" style="height: 375px"></div>
+              <div class="timetxt">Thời gian</div>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td class="btn_option">
+              <input
+                type="button"
+                id="change_sound"
+                name="Button"
+                class="soundOn"
+                value="Tắt âm thanh"
+                onclick="el.changesound()"
+              />
+              <input
+                type="button"
+                name="Button"
+                id="change_block"
+                value="Đổi vị trí"
+                onclick="change_block()"
+              />
+              <input
+                type="button"
+                id="gReplay"
+                name="Button"
+                value="Chơi lại"
+                onclick="el.disp_confirm()"
+              />
+              <input
+                type="button"
+                id="gPause"
+                name="Button"
+                value="Tạm dừng"
+                onclick="el.pas_confirm()"
+              />
+              <input
+                type="button"
+                id="gFull"
+                name="Button"
+                value="Toàn màn hình"
+                onclick="goFullscreen('gFull1'); return false"
+              />
+              <input
+                type="button"
+                id="gNextLV"
+                name="Button"
+                value="Next level"
+                onclick="el.goNextLV()"
+              />
+            </td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script type="text/javascript" src="css_js/pikachuold2.js"></script>
+    <audio id="audiosound2" __idm_id__="139265">
+      <source src="sound/sound2.mp3" />
+      <source src="sound/sound2.ogg" />
+    </audio>
+    <audio id="audiosound1">
+      <source src="sound/sound1.mp3" />
+      <source src="sound/sound1.ogg" />
+    </audio>
+    <audio id="audiosound4">
+      <source src="sound/sound4.mp3" />
+      <source src="sound/sound4.ogg" />
+    </audio>
+  </body>
+</html>
