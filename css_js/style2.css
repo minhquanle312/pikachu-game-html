@@ -112,11 +112,19 @@ input {
   padding: 16px 0px;
   gap: 4px;
 
-  width: 270px;
-  height: 157px;
+  width: 200px;
+  height: 118px;
 
   background: rgba(0, 0, 0, 0.16);
   border-radius: 16px;
 
   margin-bottom: 34px;
+}
+
+.leaderboard-button {
+  transform: translateX(-20px);
+}
+
+.nft-button {
+  transform: translateX(-70px);
 }

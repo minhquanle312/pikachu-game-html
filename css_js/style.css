@@ -28,7 +28,7 @@ body {
   width: 100%;
   background: url(pikachu-bg.png) no-repeat 0 0;
   /* background: url(bgpikachu1.jpg) no-repeat 0 0; */
-  background-size: 100% !important;
+  background-size: cover;
 }
 #maintable #board > div {
   top: -40px;
@@ -51,13 +51,16 @@ body {
 }
 .timebar {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 #timebar {
   position: relative;
   margin: 0 auto;
-  top: -90px;
   width: 23px;
   max-height: 469px;
+  height: 375px;
   background: url(timebar.png) no-repeat center bottom;
 }
 .timetxt {
@@ -66,15 +69,15 @@ body {
   font-size: 20px;
   font-weight: bold;
   font-family: sans-serif;
-  top: -70px;
   text-align: center;
   text-transform: uppercase;
+  margin-top: 10px;
 }
 .status {
   position: relative;
   width: 250px;
   font-style: normal;
-  font-size: 32px;
+  font-size: 28px;
   color: #ffe506;
   display: flex;
   flex-direction: column;
@@ -90,7 +93,7 @@ body {
   display: block;
   position: relative;
   color: #fff;
-  font-size: 40px;
+  font-size: 28px;
   font-weight: bold;
   text-transform: uppercase;
   text-shadow: 2px 0px 3px #000;
@@ -107,8 +110,8 @@ body {
   font-family: "Rubik";
   font-style: normal;
   font-weight: 700;
-  font-size: 64px;
-  line-height: 76px;
+  font-size: 36px;
+  /* line-height: 76px; */
   /* identical to box height */
   text-align: center;
 
@@ -207,9 +210,15 @@ body {
 /* Left sidebar */
 .left-sidebar {
   position: fixed;
-  left: 20px;
+  position: absolute;
+  width: 353.58px;
+  height: 77px;
+  left: -175px;
+  top: 44px;
+
+  /* left: 20px;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%); */
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -217,7 +226,7 @@ body {
 }
 
 .sidebar-button {
-  background: linear-gradient(135deg, #f4d03f 0%, #f39c12 100%);
+  /* background: linear-gradient(135deg, #f4d03f 0%, #f39c12 100%);
   border: 2px solid #e67e22;
   color: #2c3e50;
   padding: 12px 20px;
@@ -229,7 +238,28 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   min-width: 140px;
   text-align: center;
-  font-family: "Rubik", sans-serif;
+  font-family: "Rubik", sans-serif; */
+  /* Frame 2 */
+
+  /* Auto layout */
+  font-family: "ComicSansMS", sans-serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 16px 27px 16px 47px;
+  gap: 10px;
+
+  /* position: absolute;
+  width: 353.58px;
+  height: 77px;
+  left: -22px;
+  top: calc(50% - 77px / 2 - 0.5px); */
+
+  background: #f7ef9a;
+  border: 3px solid #532100;
+  box-shadow: 3px 3px 0px #532100;
+  border-radius: 0px 16px 16px 0px;
 }
 
 .sidebar-button:hover {
@@ -254,6 +284,7 @@ body {
 .status {
   display: flex;
   flex-direction: column;
+  align-self: flex-end;
   min-width: 250px;
 }
 
@@ -261,6 +292,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  transform: translateX(140px);
 }
 
 .board-container {
@@ -274,8 +306,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   min-width: 100px;
+  align-self: flex-end;
 }
 
 .controls-row {
