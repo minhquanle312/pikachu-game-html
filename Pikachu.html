@@ -131,7 +131,7 @@
           <div class="timebar-container">
             <div class="timebar">
               <div id="timebar" style="height: 375px"></div>
-              <div class="timetxt">Thời gian</div>
+              <div class="timetxt">Time</div>
             </div>
           </div>
         </div>
@@ -139,35 +139,57 @@
         <!-- Bottom row with control buttons -->
         <div class="controls-row">
           <div class="btn_option">
-            <input
-              type="button"
-              id="change_sound"
-              name="Button"
-              class="soundOn"
-              value="Mute"
-              onclick="el.changesound()"
-            />
-            <input
-              type="button"
-              name="Button"
-              id="change_block"
-              value="Shuffle"
-              onclick="change_block()"
-            />
-            <input
-              type="button"
-              id="gPause"
-              name="Button"
-              value="Pause"
-              onclick="el.pas_confirm()"
-            />
-            <input
-              type="button"
-              id="gReplay"
-              name="Button"
-              value="Restart"
-              onclick="el.disp_confirm()"
-            />
+            <button id="change_sound">
+              <img
+                src="css_js/svgs/mute_icon.svg"
+                alt="Mute"
+                style="width: 20px; height: 20px"
+              /><input
+                type="button"
+                name="Button"
+                class="soundOn"
+                value="Mute"
+                onclick="el.changesound()"
+              />
+            </button>
+
+            <button id="change_block">
+              <img
+                src="css_js/svgs/shuffle_icon.svg"
+                alt="Shuffle"
+                style="width: 20px; height: 20px"
+              /><input
+                type="button"
+                name="Button"
+                value="Shuffle"
+                onclick="change_block()"
+              />
+            </button>
+            <button id="gPause">
+              <img
+                src="css_js/svgs/pause_icon.svg"
+                alt="Pause"
+                style="width: 20px; height: 20px"
+              /><input
+                type="button"
+                name="Button"
+                value="Pause"
+                onclick="el.pas_confirm()"
+              />
+            </button>
+
+            <button id="gReplay">
+              <img
+                src="css_js/svgs/restart_icon.png"
+                alt="Replay"
+                style="width: 20px; height: 20px"
+              /><input
+                type="button"
+                name="Button"
+                value="Restart"
+                onclick="el.disp_confirm()"
+              />
+            </button>
 
             <!-- <input
               type="button"
@@ -176,13 +198,19 @@
               value="Toàn màn hình"
               onclick="goFullscreen('gFull1'); return false"
             /> -->
-            <input
-              type="button"
-              id="gNextLV"
-              name="Button"
-              value="Next level"
-              onclick="el.goNextLV()"
-            />
+            <button id="gNextLV">
+              <input
+                type="button"
+                name="Button"
+                value="Next level"
+                onclick="el.goNextLV()"
+              />
+              <img
+                src="css_js/svgs/arrow-right_icon.svg"
+                alt="Next level"
+                style="width: 20px; height: 20px"
+              />
+            </button>
           </div>
         </div>
       </div>

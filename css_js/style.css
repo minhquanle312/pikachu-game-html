@@ -64,11 +64,11 @@ body {
   background: url(timebar.png) no-repeat center bottom;
 }
 .timetxt {
+  font-family: "ComicSansMS", sans-serif;
   position: relative;
   color: #fff;
   font-size: 20px;
   font-weight: bold;
-  font-family: sans-serif;
   text-align: center;
   text-transform: uppercase;
   margin-top: 10px;
@@ -135,6 +135,10 @@ body {
 .btn_option {
   padding-bottom: 20px;
   text-align: center;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 #gReplay,
 #gPause,
@@ -164,17 +168,32 @@ body {
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
-#gReplay:hover,
-#gPause:hover,
-#gFull:hover,
-#gNextLV:hover,
-#change_sound:hover,
-#change_block:hover {
-  /* border: 1px solid #ffe506;
-  -moz-box-shadow: 0px 0px 5px #ffe506;
-  -webkit-box-shadow: 0px 0px 5px #ffe506;
-  box-shadow: 0px 0px 5px #ffe506; */
+
+#gReplay input,
+#gPause input,
+#gFull input,
+#gNextLV input,
+#change_sound input,
+#change_block input {
+  background: transparent;
+  border: none;
+  color: white;
+  padding: 0;
+  font-size: 20px;
+}
+
+#gReplay:hover input,
+#gPause:hover input,
+#gFull:hover input,
+#gNextLV:hover input,
+#change_sound:hover input,
+#change_block:hover input {
   text-shadow: 0px 0px 14px #ffffff;
 }
 .menuFooter ul li a {
