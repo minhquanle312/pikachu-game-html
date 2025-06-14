@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Auth0 Debug Test</title>
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
+  </head>
+  <body>
+    <h1>Auth0 Debug Test</h1>
+    <div id="debug-info"></div>
+    <button id="login-btn">Login with X</button>
+    <button id="logout-btn" style="display: none">Logout</button>
+    <div id="user-info"></div>
+
+    <script>
+      let auth0Client = null;
+      const debugDiv = document.getElementById("debug-info");
+      const userDiv = document.getElementById("user-info");
+      const loginBtn = document.getElementById("login-btn");
+      const logoutBtn = document.getElementById("logout-btn");
+
+      function log(message) {
+        console.log(message);
+        debugDiv.innerHTML += "<p>" + message + "</p>";
+      }
+
+      async function initAuth0() {
+        try {
+          log("Starting Auth0 initialization...");
+          log("Current URL: " + window.location.href);
+
+          auth0Client = await auth0.createAuth0Client({
+            domain: "dev-6b2cyjbjq6z4su8c.us.auth0.com",
+            clientId: "EVi6hCptbkUfkz5MqgjJri3jhdH6Ejvl",
+            authorizationParams: {
+              redirect_uri: window.location.origin + window.location.pathname,
+            },
+          });
+
+          log("Auth0 client created successfully");
+
+          // Handle callback
+          const query = window.location.search;
+          if (query.includes("code=") && query.includes("state=")) {
+            log("Handling Auth0 callback...");
+            try {
+              const result = await auth0Client.handleRedirectCallback();
+              log("Callback result: " + JSON.stringify(result));
+
+              // Clean URL
+              window.history.replaceState(
+                {},
+                document.title,
+                window.location.pathname
+              );
+
+              const user = await auth0Client.getUser();
+              updateUI(user);
+            } catch (error) {
+              log("Callback error: " + error.message);
+            }
+          } else {
+            // Check if already authenticated
+            const isAuthenticated = await auth0Client.isAuthenticated();
+            log("Is authenticated: " + isAuthenticated);
+
+            if (isAuthenticated) {
+              const user = await auth0Client.getUser();
+              updateUI(user);
+            }
+          }
+        } catch (error) {
+          log("Auth0 init error: " + error.message);
+        }
+      }
+
+      function updateUI(user) {
+        if (user) {
+          log("User logged in: " + JSON.stringify(user, null, 2));
+          userDiv.innerHTML =
+            "<h3>User Info:</h3><pre>" +
+            JSON.stringify(user, null, 2) +
+            "</pre>";
+          loginBtn.style.display = "none";
+          logoutBtn.style.display = "block";
+        } else {
+          loginBtn.style.display = "block";
+          logoutBtn.style.display = "none";
+          userDiv.innerHTML = "";
+        }
+      }
+
+      loginBtn.addEventListener("click", async () => {
+        try {
+          log("Starting login...");
+          await auth0Client.loginWithRedirect({
+            authorizationParams: {
+              connection: "twitter",
+            },
+          });
+        } catch (error) {
+          log("Login error: " + error.message);
+        }
+      });
+
+      logoutBtn.addEventListener("click", async () => {
+        try {
+          await auth0Client.logout({
+            logoutParams: {
+              returnTo: window.location.origin + window.location.pathname,
+            },
+          });
+        } catch (error) {
+          log("Logout error: " + error.message);
+        }
+      });
+
+      // Initialize when page loads
+      document.addEventListener("DOMContentLoaded", initAuth0);
+    </script>
+  </body>
+</html>

@@ -335,3 +335,43 @@ body {
   justify-content: center;
   margin-top: 20px;
 }
+
+/* Twitter login button specific styles */
+.twitter-login-button {
+  background: #1da1f2 !important;
+  color: white !important;
+  border: 3px solid #0d8bd9 !important;
+}
+
+.twitter-login-button:hover {
+  background: #0d8bd9 !important;
+  color: white !important;
+}
+
+.twitter-login-button img {
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+/* Notification animations */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}

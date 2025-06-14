@@ -12,7 +12,179 @@
     <script type="text/javascript" src="css_js/jhCore-1.54.js"></script>
     <link type="text/css" rel="Stylesheet" href="css_js/style.css" />
     <link type="text/css" rel="Stylesheet" href="css_js/style2.css" />
+
+    <!-- Auth0 SDK -->
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
+
     <script type="text/javascript">
+      // Auth0 Configuration
+      let auth0Client = null;
+
+      // Initialize Auth0
+      const initAuth0 = async () => {
+        auth0Client = await auth0.createAuth0Client({
+          domain: "dev-6b2cyjbjq6z4su8c.us.auth0.com", // Replace with your Auth0 domain
+          clientId: "EVi6hCptbkUfkz5MqgjJri3jhdH6Ejvl", // Replace with your Auth0 client ID
+          authorizationParams: {
+            redirect_uri: window.location.origin,
+          },
+        });
+
+        // Check if user is already authenticated
+        const isAuthenticated = await auth0Client.isAuthenticated();
+        if (isAuthenticated) {
+          const user = await auth0Client.getUser();
+          updateUIAfterLogin(user);
+        }
+
+        // Handle redirect callback
+        const query = window.location.search;
+        if (query.includes("code=") && query.includes("state=")) {
+          await auth0Client.handleRedirectCallback();
+          window.history.replaceState({}, document.title, "/");
+
+          const user = await auth0Client.getUser();
+          updateUIAfterLogin(user);
+        }
+      };
+
+      // Login with X (Twitter)
+      const loginWithX = async () => {
+        try {
+          if (!auth0Client) {
+            await initAuth0();
+          }
+
+          showNotification("Redirecting to X for login...", "info");
+
+          await auth0Client.loginWithRedirect({
+            authorizationParams: {
+              connection: "twitter", // This tells Auth0 to use Twitter connection
+            },
+          });
+        } catch (error) {
+          console.error("Login error:", error);
+          showNotification("Login failed. Please try again.", "error");
+        }
+      };
+
+      // Logout function
+      const logout = async () => {
+        try {
+          const user = getCurrentUser();
+          if (user) {
+            showNotification(`Goodbye, ${user.name || user.nickname}!`, "info");
+          }
+
+          localStorage.removeItem("pikachu_user");
+
+          await auth0Client.logout({
+            logoutParams: {
+              returnTo: window.location.origin,
+            },
+          });
+        } catch (error) {
+          console.error("Logout error:", error);
+          showNotification("Logout failed. Please try again.", "error");
+        }
+      };
+
+      // Update UI after successful login
+      const updateUIAfterLogin = (user) => {
+        const loginButton = document.querySelector(".twitter-login-button");
+        if (loginButton && user) {
+          loginButton.innerHTML = `
+            <img src="${
+              user.picture || "css_js/svgs/connect_wallet.svg"
+            }" style="width: 20px; height: 20px; border-radius: 50%; margin-right: 8px;" />
+            ${user.name || user.nickname || "User"}
+          `;
+          loginButton.onclick = logout;
+
+          // You can also save user data to localStorage or use it in your game
+          localStorage.setItem("pikachu_user", JSON.stringify(user));
+
+          // Show welcome message
+          showNotification(
+            `Welcome back, ${user.name || user.nickname}!`,
+            "success"
+          );
+
+          console.log("User logged in:", user);
+        }
+      };
+
+      // Show notification to user
+      const showNotification = (message, type = "info") => {
+        const notification = document.createElement("div");
+        notification.className = `notification notification-${type}`;
+        notification.textContent = message;
+        notification.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: ${
+            type === "success"
+              ? "#4CAF50"
+              : type === "error"
+              ? "#f44336"
+              : "#2196F3"
+          };
+          color: white;
+          padding: 12px 24px;
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+          z-index: 10000;
+          font-family: 'Rubik', sans-serif;
+          font-weight: 500;
+          animation: slideIn 0.3s ease-out;
+        `;
+
+        document.body.appendChild(notification);
+
+        setTimeout(() => {
+          notification.style.animation = "slideOut 0.3s ease-out";
+          setTimeout(() => {
+            if (notification.parentNode) {
+              notification.parentNode.removeChild(notification);
+            }
+          }, 300);
+        }, 3000);
+      };
+
+      // Get current user (useful for other parts of your game)
+      const getCurrentUser = () => {
+        try {
+          const userData = localStorage.getItem("pikachu_user");
+          return userData ? JSON.parse(userData) : null;
+        } catch (error) {
+          console.error("Error getting user data:", error);
+          return null;
+        }
+      };
+
+      // Enhanced game integration - you can use this in your game logic
+      const updateGameWithUserData = (user) => {
+        if (user) {
+          // Example: Update game UI with user info
+          const levelElement = document.getElementById("level");
+          if (levelElement) {
+            // You could load saved level progress here
+            console.log("User level data could be loaded here");
+          }
+
+          // Example: Load user's high score
+          const scoreElement = document.getElementById("score");
+          if (scoreElement) {
+            // You could load saved high score here
+            console.log("User high score could be loaded here");
+          }
+        }
+      };
+
+      // Initialize Auth0 when page loads
+      document.addEventListener("DOMContentLoaded", initAuth0);
+
       // Xóa hoặc comment dòng này
       // document.domain = location.hostname;
 
@@ -98,6 +270,23 @@
       </button>
       <button class="sidebar-button nft-button">
         <img src="css_js/svgs/nft.svg" /> NFT
+      </button>
+      <button
+        class="sidebar-button twitter-login-button"
+        onclick="loginWithX()"
+      >
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="white"
+          style="margin-right: 8px"
+        >
+          <path
+            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+          />
+        </svg>
+        Login with X
       </button>
     </div>
 
